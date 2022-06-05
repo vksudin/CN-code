@@ -1,0 +1,174 @@
+declare 
+ marks number;
+ 
+begin 
+ marks:=&marks;
+
+if marks>=90 AND marks<=100 then
+dbms_output.put_line('O');
+elsif marks<90 AND marks>80 then
+dbms_output.put_line('E');
+elsif marks<80 AND marks>70 then
+dbms_output.put_line('G');
+else
+dbms_output.put_line('F');
+
+end if;
+end;
+/
+
+Q2
+-------------------------------------
+declare 
+ range number;
+ i number;
+
+begin
+ range:=&range; 
+for i in 1..range
+loop
+ if(i MOD 2=0) then
+  dbms_output.put_line(i);
+ end if;
+end loop;
+end;
+/
+ 
+Q3
+------------------------------------
+declare
+num number;
+i number;
+factorial number;
+begin
+
+num:=&number;
+factorial:=1;
+if num<1 then
+dbms_output.put_line('factorial does not exist');
+end if;
+--reverse number
+for i in  1..num
+loop
+    factorial:=factorial*i;
+end loop;
+
+dbms_output.put_line(factorial);
+end;
+/
+
+
+
+-------------------------------------
+dbms_random.random()
+dbms_random.value(2,5)
+---------------------------------
+Q4
+--------------------
+declare
+n1 number;
+n2 number;
+n3 number;
+counter number;
+
+
+begin
+
+n1:=0;
+n2:=1;
+n3:=0;
+counter:=&counter;
+for i in 1..counter
+loop
+  n3:=n1+n2;
+ dbms_output.put_line(n3);
+  n1:=n2;
+  n2:=n3;
+end loop;
+end;
+/
+--------------------------
+Q5
+-------------------------------
+create table random_num(
+rand_no number(20)
+);
+
+declare 
+n number(20);
+begin
+
+  for i in 1..5
+  loop
+   n:=dbms_random.random();
+   insert into random_num values(n);
+   end loop;
+end;
+-----------------------------
+Q6
+-----------------------------
+create table sphere(
+rad number(2),
+area number(10,2),
+volume number(15,2)
+);
+
+
+declare 
+a sphere.area%type;
+v sphere.volume%type;
+begin
+
+  for i in 1..20
+  loop
+  a:=4*3.14*i*i;
+  v:=4/3 * 3.14 *i*i*i;
+   insert into sphere values(i,a,v);
+   end loop;
+end;
+/
+
+------------------------------
+Q7
+-------------------------------
+declare 
+msid sailor.sid%type;
+r sailor%rowtype;
+begin
+	msid:=&sailor_id;
+	select * into r from sailor where sid=msid;
+ dbms_output.put_line('sailor name '||r.sname||' '||r.mname||' '||r.surname);
+ dbms_output.put_line('sailor rating '||r.rating);
+ dbms_output.put_line('sailor age '||r.age);
+end;
+/
+
+.......................................................
+11.
+...............
+declare
+str varchar2(20);
+rev varchar2(20);
+len number(2);
+begin
+str:='&str';
+len:=length(str);
+for i in reverse 1..len
+loop
+rev:=rev||substr(str,i,1);
+end loop;
+dbms_output.put_line('Reverse is: '||rev);
+end;
+/
+ 
+  
+
+
+
+
+
+
+
+
+
+
