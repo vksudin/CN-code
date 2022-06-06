@@ -401,3 +401,4 @@ begin
 end;
 /
 
+Flashback table <tablename> to before drop;
