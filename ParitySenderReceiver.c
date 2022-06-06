@@ -8,8 +8,14 @@ void compare(char parity[])
 		cmp[i]=parity[i];
 		i++;
 	}
-	if(parity[i-1]=='0'){cmp[i-1]='1';}
-	else{cmp[i-1]='0';}
+	if(parity[i-1]=='0')
+	{
+		cmp[i-1]='1';
+	}
+	else
+	{
+		cmp[i-1]='0';
+	}	
 	cmp[i]='\0';
 	printf("Erroneous result: %s\nRejected\n",cmp);
 }
